@@ -1,12 +1,12 @@
 class Node:
     def __init__(self, value):
-        '''Create a new node'''
+        #'''Create a new node'''
         self.value = value
         self.next = None
 
 class Linked_list:
     def __init__(self, value):
-        '''linked_list constructor'''
+        #'''linked_list constructor'''
         new_node = Node(value)
         self.head = new_node
         self.tail = new_node
@@ -18,16 +18,16 @@ class Linked_list:
         'create the new node'
         new_node = Node(value)
         
-        'check to see if the head is empty'
+        #'check to see if the head is empty'
         if self.head is None:
-            'create a node for the head'
+           # 'create a node for the head'
             self.head = Node(value)
             self.tail = Node(value)
         else:
-            'point the last node to the new node *appending it*'
+           # 'point the last node to the new node *appending it*'
             self.tail.next = new_node
 
-            'point the tail to the last node'
+            #'point the tail to the last node'
             self.tail = new_node
             self.tail.next = None
         self.length += 1
@@ -39,7 +39,7 @@ class Linked_list:
         new_node = Node(value)
         temp_head = self.head
 
-        'assemble a new node if user tries to prepend an empty linked-list'
+        #'assemble a new node if user tries to prepend an empty linked-list'
         if self.length <= 0:
             temp_head = new_node
             self.head = temp_head
@@ -54,56 +54,56 @@ class Linked_list:
 
 
     def link_list_length(self):
-        'REturn the length of the current linked_list'
+        #'REturn the length of the current linked_list'
         return self.length
 
     def print_list(self):
-        'Check if linked-list is empty'
+        #'Check if linked-list is empty'
         if self.length == 0:
             return None
         temp = self.head
 
         while temp is not None:
             print(temp.value)
-            'move to the next node'
+            #'move to the next node'
             temp = temp.next
         print(f'List Length is {self.link_list_length()}')
         return True
         
     def pop_first_node(self):
-        'Pop the first node off the linked-List'
+        #'Pop the first node off the linked-List'
         temp_head = self.head
-        'check for empty linked-lists'
+       # 'check for empty linked-lists'
         if self.length <= 0:
             return None
 
-        'Move head to next node'              
+        #'Move head to next node'              
         self.head = self.head.next
         self.length -= 1
         
-        'Move tail to None if length is 0 after decrement'
+        #'Move tail to None if length is 0 after decrement'
         if self.length == 0:
             self.tail = None
         return temp_head
 
 
     def pop(self):
-        'Pop node off the end of linked-list'
+        #'Pop node off the end of linked-list'
         temp = self.head
         pre = self.tail
 
-        'If user attempts to pop on an empty linked-list'
+        #'If user attempts to pop on an empty linked-list'
         if self.length <= 0:
             return None
 
-        'If user is popping linked-list with one Node'
+        #'If user is popping linked-list with one Node'
         if self.length == 1:            
             self.length -= 1
             temp = self.head
             self.head = None
             self.tail = self.head
 
-        'Move temp(Head) to next Node'
+        #'Move temp(Head) to next Node'
         while temp.next:            
             pre = temp
             temp = temp.next
@@ -114,7 +114,7 @@ class Linked_list:
 
 
     def get_value(self, index):
-        'Check for indexes that don\'t exist'
+        #'Check for indexes that don\'t exist'
         if self.length < index or index >= self.length:
             return None        
         temp_head = self.head
@@ -129,10 +129,10 @@ class Linked_list:
 
 
     def set_value(self, index, new_value):
-        'Verify index using get_value method'
+        #'Verify index using get_value method'
         temp = self.get_value(index)
 
-        'Set new_value if temp is true'
+        #'Set new_value if temp is true'
         if temp:
             temp.value = new_value
             return True
@@ -140,18 +140,18 @@ class Linked_list:
 
 
     def insert(self, index, new_value):
-        'If the user tries to insert a node with a lenght of zero'
+        #'If the user tries to insert a node with a lenght of zero'
         if self.length == 0:
             return self.prepend(new_value)
         
-        'If user tries to insert node at the end of list'
+        #'If user tries to insert node at the end of list'
         if index == self.length:
             return self.append(new_value)
         
-        'Verify index using get_value method'
+        #'Verify index using get_value method'
         temp = self.get_value(index)
  
-        'Insert new Node if temp'
+        #'Insert new Node if temp'
         if temp:
             new_node = Node(new_value)
             new_node.next = temp.next
@@ -170,7 +170,7 @@ class Linked_list:
         if index == self.length - 1:
             return self.pop() 
 
-        'Remove the node'
+        #'Remove the node'
         prevous_node = self.get_value(index - 1)
         temp = prevous_node.next
         prevous_node.next = temp.next

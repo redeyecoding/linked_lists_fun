@@ -218,7 +218,7 @@ class Linked_list:
             iteration -= 1
 
             #'Move head to the NEXT node, move tails to PREVIOUS node'
-            temp_head = temp_head.next # the reason this works is because i'm not changing
+            temp_head = temp_head.next
             current_tail_index -= 1
             temp_tail = self.get_value(current_tail_index)
         return

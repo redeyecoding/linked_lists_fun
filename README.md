@@ -1,5 +1,6 @@
 # linked_lists_operations
-Creating methods for adding and editing nodes within a linked_list
+
+Methods for adding and editing nodes within a linked_list
 
 This program will provide you with the ability to edit, remove and add nodes to a linked_list.
 

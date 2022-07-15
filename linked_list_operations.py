@@ -227,7 +227,7 @@ class Linked_list:
         #Reverse method V2
         def reverse_list(self):
             ''' This version points the Node's "next" attribute in the opposite 
-            direction...a more efficient way to revser the list'''
+            direction...a more efficient way to reverse the list'''
             temp = self.head
             self.head = self.tail
             self.tail = temp

@@ -176,51 +176,76 @@ class Linked_list:
         prevous_node.next = temp.next
         self.length -= 1
         return temp
-
-    def reverse_list(self):
-        #'User cannot reverse a node that is less than or equal to 1 in length'
-        if self.length <= 1:
-            return None
+    
+    #Reverse method V1
+#     def reverse_list(self):
+#         #'User cannot reverse a node that is less than or equal to 1 in length'
+#         if self.length <= 1:
+#             return None
         
-        #'Place_holders for swapped values'
-        head_place_holder = None
-        tail_place_holder = None
-        temp_head = self.head
-        temp_tail = self.tail
+#         #'Place_holders for swapped values'
+#         head_place_holder = None
+#         tail_place_holder = None
+#         temp_head = self.head
+#         temp_tail = self.tail
 
-        '''The "Iteration" variable is the Number of times linked-list will be iterated through.
-            This will cover lists lengths of  ODD or EVEN numbers.
-            *For Odd-numbered lists, the Center node will not be touched.*
-            example: 
-                After one iteration, odd number linked-list (A-B-C-D-E-F-G) will become:
-                    v           v
-                    G-B-C-D-E-F-A
-            The second iteration will become:
-                      v       v
-                    G-F-C-D-E-B-A
-            Final iteration will become:
-                        v   v
-                    G-F-E-D-C-B-A
-        '''
-        iteration = self.length // 2 
+#         '''The "Iteration" variable is the Number of times linked-list will be iterated through.
+#             This will cover lists lengths of  ODD or EVEN numbers.
+#             *For Odd-numbered lists, the Center node will not be touched.*
+#             example: 
+#                 After one iteration, odd number linked-list (A-B-C-D-E-F-G) will become:
+#                     v           v
+#                     G-B-C-D-E-F-A
+#             The second iteration will become:
+#                       v       v
+#                     G-F-C-D-E-B-A
+#             Final iteration will become:
+#                         v   v
+#                     G-F-E-D-C-B-A
+#         '''
+#         iteration = self.length // 2 
 
-        current_tail_index = self.length - 1
+#         current_tail_index = self.length - 1
         
-        while iteration != 0:
-            head_place_holder = temp_head.value
-            tail_place_holder = temp_tail.value
+#         while iteration != 0:
+#             head_place_holder = temp_head.value
+#             tail_place_holder = temp_tail.value
             
-            #'Swap Values for tails and heads'
-            temp_head.value = tail_place_holder
-            temp_tail.value = head_place_holder
+#             #'Swap Values for tails and heads'
+#             temp_head.value = tail_place_holder
+#             temp_tail.value = head_place_holder
 
-            #'Decrease number if iterations'
-            iteration -= 1
+#             #'Decrease number if iterations'
+#             iteration -= 1
 
-            #'Move head to the NEXT node, move tails to PREVIOUS node'
-            temp_head = temp_head.next
-            current_tail_index -= 1
-            temp_tail = self.get_value(current_tail_index)
+#             #'Move head to the NEXT node, move tails to PREVIOUS node'
+#             temp_head = temp_head.next
+#             current_tail_index -= 1
+#             temp_tail = self.get_value(current_tail_index)
+#         return
+        
+        #Reverse method V2
+        def reverse_list(self):
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+
+        after = temp
+        before = None
+
+        for _ in range(self.length):
+            #'Point the head in the opposite direction'
+            after = temp.next
+
+            #Move the previous node to the current position
+            temp.next = before
+
+            #Move head to the next node
+            before = temp
+
+            #Move after node
+            temp = after
+            
         return
 
 

@@ -226,26 +226,23 @@ class Linked_list:
         
         #Reverse method V2
         def reverse_list(self):
-        temp = self.head
-        self.head = self.tail
-        self.tail = temp
+            ''' This version points the next attribute in the opposite 
+            direction...a more efficient way to revser the list'''
+            temp = self.head
+            self.head = self.tail
+            self.tail = temp
 
-        after = temp
-        before = None
+            after = temp
+            before = None
 
-        for _ in range(self.length):
-            #'Point the head in the opposite direction'
-            after = temp.next
+            for _ in range(self.length):
+                #Move after node
+                after = temp.next
 
-            #Move the previous node to the current position
-            temp.next = before
-
-            #Move head to the next node
-            before = temp
-
-            #Move after node
-            temp = after
-            
+                #Point current node in the opposite direction
+                temp.next = before
+                before = temp
+                temp = after            
         return
 
 
